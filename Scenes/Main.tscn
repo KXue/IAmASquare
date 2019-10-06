@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Tilesets/Map.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/GameMap.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Block.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SpriteFrames/Player_Anims.tres" type="SpriteFrames" id=5]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=6]
+[ext_resource path="res://Sprites/Block.png" type="Texture" id=7]
 
 [node name="Scene" type="Node2D"]
 
@@ -20,7 +23,27 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 script = ExtResource( 2 )
 block = ExtResource( 3 )
 
-[node name="Spite" parent="." instance=ExtResource( 4 )]
-position = Vector2( 24, 24 )
+[node name="Spite" type="AnimatedSprite" parent="." instance=ExtResource( 4 )]
+position = Vector2( 16, 16 )
+frames = ExtResource( 5 )
+animation = "Idle"
+frame = 2
+playing = true
+centered = false
+script = ExtResource( 6 )
 map_path = NodePath("../TileMap")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_left = 60.0
+margin_top = 30.0
+margin_right = 150.0
+margin_bottom = 90.0
+texture = ExtResource( 7 )
+region_rect = Rect2( -0.532703, -1.04265, 16.6389, 17.8564 )
+patch_margin_left = 5
+patch_margin_top = 3
+patch_margin_right = 2
+patch_margin_bottom = 2
+[connection signal="add_block" from="TileMap" to="Spite" method="_on_add_block"]
+[connection signal="game_won" from="TileMap" to="Spite" method="_on_game_won"]
 [connection signal="player_moved" from="Spite" to="TileMap" method="_on_player_moved"]

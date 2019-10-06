@@ -1,13 +1,10 @@
-extends Sprite
+extends AnimatedSprite
 
 export var map_path : NodePath
 var map : TileMap
 var connected_blocks : Array = []
 
 signal player_moved
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,17 +25,25 @@ func _process(delta):
 	elif Input.is_action_just_pressed("ui_down"):
 		movement += Vector2.DOWN
 
-	movement *= 16
-	var new_position = transform.origin + movement
+	movement *= map.cell_size
 
-	if movement.length_squared() > 0 and can_move(new_position):
+	if movement.length_squared() > 0 and can_move(movement):
 		global_translate(movement)
 		emit_signal("player_moved", connected_blocks)
 
-func can_move(new_position : Vector2):
-	return map.can_move(new_position)
+func can_move(movement : Vector2):
+	var move : bool = true
+	for block in connected_blocks:
+		if not map.can_move(block.global_position + movement):
+			return false
+	return true
 
 func _on_add_block(block : Node2D):
+	block.transform.origin -= transform.origin
 	add_child(block);
+	block.set_owner(self)
 	connected_blocks.append(block)
 	pass
+
+func _on_game_won():
+	play("Win")

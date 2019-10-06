@@ -4,3 +4,4 @@
 
 [node name="Block" type="Sprite"]
 texture = ExtResource( 1 )
+centered = false
