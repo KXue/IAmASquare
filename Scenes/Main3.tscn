@@ -4,13 +4,13 @@
 [ext_resource path="res://Scripts/GameMap.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Block.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Sprites/UI/UI_Title.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/UI/UI_9_Slice.png" type="Texture" id=6]
-[ext_resource path="res://Scripts/VictoryScreen.gd" type="Script" id=7]
-[ext_resource path="res://Sprites/UI/UI_Victory_Image.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/UI/UI_Next.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/UI/UI_Replay.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/UI/UI_Exit.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/UI/UI_9_Slice.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/VictoryScreen.gd" type="Script" id=6]
+[ext_resource path="res://Sprites/UI/UI_Victory_Image.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/UI/UI_Next.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/UI/UI_Replay.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/UI/UI_Exit.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/Replay.gd" type="Script" id=11]
 
 [node name="Scene" type="Node2D"]
 
@@ -23,24 +23,15 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_use_kinematic = true
 format = 1
-tile_data = PoolIntArray( 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262154, 1, 0, 327685, 1, 0, 327689, 0, 0, 327690, 1, 0, 393221, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0, 393226, 1, 0 )
+tile_data = PoolIntArray( 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, 131082, 1, 0, 196613, 1, 0, 196616, 2, 0, 196617, 2, 0, 196618, 1, 0, 262149, 1, 0, 262154, 1, 0, 327685, 1, 0, 327689, 0, 0, 327690, 0, 0, 327691, 1, 0, 393221, 1, 0, 393225, 0, 0, 393226, 1, 0, 393227, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0 )
 script = ExtResource( 2 )
 block = ExtResource( 3 )
-next_scene = "res://Scenes/Main2.tscn"
+next_scene = "res://Scenes/Main4.tscn"
 
 [node name="Spite" parent="." instance=ExtResource( 4 )]
-position = Vector2( 96, 80 )
-frame = 0
+position = Vector2( 96, 48 )
+frame = 1
 map_path = NodePath("../TileMap")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 80.0
-margin_top = 5.0
-margin_right = 176.0
-margin_bottom = 63.0
-texture = ExtResource( 5 )
-expand = true
-stretch_mode = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 visible = false
@@ -48,20 +39,20 @@ margin_left = 64.0
 margin_top = 16.0
 margin_right = 192.0
 margin_bottom = 88.0
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 region_rect = Rect2( -0.0223694, 0.0833244, 32.17, 31.9651 )
 patch_margin_left = 7
 patch_margin_top = 7
 patch_margin_right = 7
 patch_margin_bottom = 7
-script = ExtResource( 7 )
+script = ExtResource( 6 )
 
 [node name="TextureRect" type="TextureRect" parent="NinePatchRect"]
 margin_left = 26.0
 margin_top = 14.0
 margin_right = 102.0
 margin_bottom = 38.0
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect"]
 margin_left = 36.0
@@ -76,21 +67,29 @@ margin_right = 36.0
 margin_bottom = 16.0
 grow_horizontal = 0
 grow_vertical = 0
-texture_normal = ExtResource( 9 )
+texture_normal = ExtResource( 8 )
 
 [node name="Replay" type="TextureButton" parent="NinePatchRect/HBoxContainer"]
 visible = false
 margin_left = 20.0
 margin_right = 36.0
 margin_bottom = 16.0
-texture_normal = ExtResource( 10 )
+texture_normal = ExtResource( 9 )
 
 [node name="Quit" type="TextureButton" parent="NinePatchRect/HBoxContainer"]
 visible = false
 margin_left = 40.0
 margin_right = 56.0
 margin_bottom = 16.0
-texture_normal = ExtResource( 11 )
+texture_normal = ExtResource( 10 )
+
+[node name="Replay2" type="TextureButton" parent="."]
+margin_left = 230.0
+margin_top = 120.0
+margin_right = 246.0
+margin_bottom = 136.0
+texture_normal = ExtResource( 9 )
+script = ExtResource( 11 )
 [connection signal="add_block" from="TileMap" to="Spite" method="_on_add_block"]
 [connection signal="game_won" from="TileMap" to="NinePatchRect" method="_on_game_won"]
 [connection signal="game_won" from="TileMap" to="Spite" method="_on_game_won"]

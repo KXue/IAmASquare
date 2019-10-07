@@ -1,6 +1,7 @@
 extends TileMap
 
 export var block : Resource
+export var next_scene : String
 signal add_block
 signal game_won
 
@@ -62,4 +63,4 @@ func check_win_condition(immediate_area : Dictionary):
 
 		if all_goals_covered:
 			print("won")
-			emit_signal("game_won")
+			emit_signal("game_won", next_scene)

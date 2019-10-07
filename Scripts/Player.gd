@@ -43,7 +43,8 @@ func _on_add_block(block : Node2D):
 	add_child(block);
 	block.set_owner(self)
 	connected_blocks.append(block)
+	emit_signal("player_moved", connected_blocks)
 	pass
 
-func _on_game_won():
+func _on_game_won(next : String):
 	play("Win")

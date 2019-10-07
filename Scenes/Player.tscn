@@ -6,7 +6,7 @@
 [node name="Spite" type="AnimatedSprite"]
 frames = ExtResource( 1 )
 animation = "Idle"
-frame = 1
+frame = 3
 playing = true
 centered = false
 script = ExtResource( 2 )
