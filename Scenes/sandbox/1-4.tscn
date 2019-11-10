@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Tilesets/Map.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/GameMap.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Block.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/Block.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Sprites/UI/UI_9_Slice.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/VictoryScreen.gd" type="Script" id=6]
 [ext_resource path="res://Sprites/UI/UI_Victory_Image.png" type="Texture" id=7]
@@ -14,31 +14,32 @@
 
 [node name="Scene" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 128, 72 )
-current = true
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_use_kinematic = true
 format = 1
-tile_data = PoolIntArray( 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, 131082, 1, 0, 196613, 1, 0, 196616, 2, 0, 196617, 2, 0, 196618, 1, 0, 262149, 1, 0, 262154, 1, 0, 327685, 1, 0, 327689, 0, 0, 327690, 0, 0, 327691, 1, 0, 393221, 1, 0, 393225, 0, 0, 393226, 1, 0, 393227, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0 )
+tile_data = PoolIntArray( 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 2, 0, 65544, 1, 0, 65545, 1, 0, 65546, 1, 0, 131073, 1, 0, 131082, 1, 0, 196609, 1, 0, 196617, 0, 0, 196618, 1, 0, 262145, 1, 0, 262151, 1, 0, 262152, 0, 0, 262154, 1, 0, 327681, 1, 0, 327682, 2, 0, 327683, 1, 0, 327690, 1, 0, 393217, 1, 0, 393219, 2, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0, 393226, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0 )
 script = ExtResource( 2 )
 block = ExtResource( 3 )
-next_scene = "res://Scenes/Main4.tscn"
+next_scene = "res://Scenes/World1/1-1.tscn"
 
 [node name="Spite" parent="." instance=ExtResource( 4 )]
-position = Vector2( 96, 48 )
+position = Vector2( 32, 32 )
 frame = 1
 map_path = NodePath("../TileMap")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 128, 72 )
+current = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Camera2D"]
+editor/display_folded = true
 visible = false
-margin_left = 64.0
-margin_top = 16.0
-margin_right = 192.0
-margin_bottom = 88.0
+margin_left = -64.0
+margin_top = -56.0
+margin_right = 64.0
+margin_bottom = 16.0
 texture = ExtResource( 5 )
 region_rect = Rect2( -0.0223694, 0.0833244, 32.17, 31.9651 )
 patch_margin_left = 7
@@ -47,21 +48,21 @@ patch_margin_right = 7
 patch_margin_bottom = 7
 script = ExtResource( 6 )
 
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect"]
+[node name="TextureRect" type="TextureRect" parent="Camera2D/NinePatchRect"]
 margin_left = 26.0
 margin_top = 14.0
 margin_right = 102.0
 margin_bottom = 38.0
 texture = ExtResource( 7 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/NinePatchRect"]
 margin_left = 36.0
 margin_top = 44.0
 margin_right = 92.0
 margin_bottom = 60.0
 alignment = 1
 
-[node name="Next" type="TextureButton" parent="NinePatchRect/HBoxContainer"]
+[node name="Next" type="TextureButton" parent="Camera2D/NinePatchRect/HBoxContainer"]
 margin_left = 20.0
 margin_right = 36.0
 margin_bottom = 16.0
@@ -69,29 +70,29 @@ grow_horizontal = 0
 grow_vertical = 0
 texture_normal = ExtResource( 8 )
 
-[node name="Replay" type="TextureButton" parent="NinePatchRect/HBoxContainer"]
+[node name="Replay" type="TextureButton" parent="Camera2D/NinePatchRect/HBoxContainer"]
 visible = false
 margin_left = 20.0
 margin_right = 36.0
 margin_bottom = 16.0
 texture_normal = ExtResource( 9 )
 
-[node name="Quit" type="TextureButton" parent="NinePatchRect/HBoxContainer"]
+[node name="Quit" type="TextureButton" parent="Camera2D/NinePatchRect/HBoxContainer"]
 visible = false
 margin_left = 40.0
 margin_right = 56.0
 margin_bottom = 16.0
 texture_normal = ExtResource( 10 )
 
-[node name="Replay2" type="TextureButton" parent="."]
-margin_left = 230.0
-margin_top = 120.0
-margin_right = 246.0
-margin_bottom = 136.0
+[node name="Replay2" type="TextureButton" parent="Camera2D"]
+margin_left = 102.0
+margin_top = 48.0
+margin_right = 118.0
+margin_bottom = 64.0
 texture_normal = ExtResource( 9 )
 script = ExtResource( 11 )
 [connection signal="add_block" from="TileMap" to="Spite" method="_on_add_block"]
-[connection signal="game_won" from="TileMap" to="NinePatchRect" method="_on_game_won"]
 [connection signal="game_won" from="TileMap" to="Spite" method="_on_game_won"]
+[connection signal="game_won" from="TileMap" to="Camera2D/NinePatchRect" method="_on_game_won"]
 [connection signal="player_moved" from="Spite" to="TileMap" method="_on_player_moved"]
-[connection signal="pressed" from="NinePatchRect/HBoxContainer/Next" to="NinePatchRect" method="_on_Next_pressed"]
+[connection signal="pressed" from="Camera2D/NinePatchRect/HBoxContainer/Next" to="Camera2D/NinePatchRect" method="_on_Next_pressed"]

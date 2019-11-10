@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Tilesets/Map.tres" type="TileSet" id=1]
 [ext_resource path="res://Scripts/GameMap.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Block.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/Block.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Sprites/UI/UI_9_Slice.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/VictoryScreen.gd" type="Script" id=6]
 [ext_resource path="res://Sprites/UI/UI_Victory_Image.png" type="Texture" id=7]
@@ -23,14 +23,14 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_use_kinematic = true
 format = 1
-tile_data = PoolIntArray( 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 1, 0, 65545, 1, 0, 65546, 1, 0, 65547, 1, 0, 65548, 1, 0, 131077, 1, 0, 131083, 2, 0, 131084, 1, 0, 131085, 1, 0, 196613, 1, 0, 196618, 1, 0, 196620, 0, 0, 196621, 1, 0, 262148, 1, 0, 262149, 2, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 1, 0, 327685, 1, 0, 327693, 1, 0, 393221, 1, 0, 393224, 2, 0, 393229, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0 )
+tile_data = PoolIntArray( 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, 131082, 1, 0, 196613, 1, 0, 196616, 2, 0, 196617, 2, 0, 196618, 1, 0, 262149, 1, 0, 262154, 1, 0, 327685, 1, 0, 327689, 0, 0, 327690, 0, 0, 327691, 1, 0, 393221, 1, 0, 393225, 0, 0, 393226, 1, 0, 393227, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0 )
 script = ExtResource( 2 )
 block = ExtResource( 3 )
-next_scene = "res://Scenes/Main.tscn"
+next_scene = "res://Scenes/World1/1-4.tscn"
 
 [node name="Spite" parent="." instance=ExtResource( 4 )]
 position = Vector2( 96, 48 )
-frame = 1
+frame = 0
 map_path = NodePath("../TileMap")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
