@@ -1,8 +1,9 @@
 [gd_resource type="SpriteFrames" load_steps=4 format=2]
 
-[ext_resource path="res://Sprites/Player_Win.png" type="Texture" id=1]
-[ext_resource path="res://Sprites/Player.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Player_2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player/Player_Win.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Player/Player.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Player/Player_2.png" type="Texture" id=3]
+
 
 [resource]
 animations = [ {

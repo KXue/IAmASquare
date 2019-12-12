@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Scripts/Player.gd"
+} ]
 _global_script_class_icons={
-
+"Player": ""
 }
 
 [application]
@@ -18,6 +23,10 @@ _global_script_class_icons={
 config/name="I Am A Square"
 run/main_scene="res://Scenes/World1/1-1.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GameSingleton="*res://Scripts/GameSingleton.gd"
 
 [display]
 

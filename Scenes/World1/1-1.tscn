@@ -23,15 +23,13 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_use_kinematic = true
 format = 1
-tile_data = PoolIntArray( 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262154, 1, 0, 327685, 1, 0, 327689, 0, 0, 327690, 1, 0, 393221, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0, 393226, 1, 0 )
+tile_data = PoolIntArray( 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262154, 1, 0, 327689, 0, 0, 327690, 1, 0, 393221, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0, 393226, 1, 0 )
 script = ExtResource( 2 )
 block = ExtResource( 3 )
 next_scene = "res://Scenes/World1/1-2.tscn"
 
 [node name="Spite" parent="." instance=ExtResource( 4 )]
-position = Vector2( 96, 80 )
-frame = 0
-map_path = NodePath("../TileMap")
+position = Vector2( 80, 80 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = 80.0

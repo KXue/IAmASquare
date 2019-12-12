@@ -6,7 +6,7 @@ signal add_block
 signal game_won
 
 func _ready():
-	pass
+	GameSingleton.set_map(self)
 
 func can_move(new_position : Vector2):
 	var new_coords = world_to_map(new_position)
@@ -62,5 +62,4 @@ func check_win_condition(immediate_area : Dictionary):
 				break
 
 		if all_goals_covered:
-			print("won")
 			emit_signal("game_won", next_scene)
