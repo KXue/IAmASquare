@@ -27,6 +27,7 @@ config/icon="res://icon.png"
 [autoload]
 
 GameSingleton="*res://Scripts/GameSingleton.gd"
+Broadcaster="*res://Scripts/Broadcaster.gd"
 
 [display]
 

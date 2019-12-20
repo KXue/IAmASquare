@@ -2,7 +2,6 @@ extends Node2D
 
 class_name Player
 
-onready var player 				: Sprite = $Player
 onready var connected_blocks	: Array = [self] setget , get_connected_blocks
 onready var final_position		: Vector2 = global_position
 onready var initial_position	: Vector2 = global_position
@@ -10,13 +9,11 @@ onready var initial_position	: Vector2 = global_position
 export var transition_value	: float
 export var is_moving		: bool = false
 
-signal player_moved
-
 func _enter_tree():
 	GameSingleton.set_player(self)
 	
 func _ready():
-	pass
+	Broadcaster.connect("add_blocks", self, "_on_add_blocks")
 
 func _process(delta):
 	var input_direction : Vector2 = Vector2(0, 0)
@@ -48,16 +45,14 @@ func _process(delta):
 		
 		transition_value = 0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if is_moving:
 		var target_offset = (final_position - initial_position) * transition_value
-		print(initial_position, final_position, transition_value)
 		set_global_position(initial_position + target_offset)
 	elif global_position != final_position:
 		global_position = final_position
 		
-func get_connected_blocks():
+func get_connected_blocks() -> Array:
 	return connected_blocks
 
 func add_block(block : Node2D):
@@ -69,8 +64,12 @@ func add_block(block : Node2D):
 func complete_move():
 	if global_position != final_position:
 		global_position = final_position
-	emit_signal("player_moved")
-			
+	Broadcaster.emit_signal("player_moved", connected_blocks)
+
+func _on_add_blocks(blocks : Array):
+	for block in blocks:
+		add_block(block)
+
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Move":
 		is_moving = false

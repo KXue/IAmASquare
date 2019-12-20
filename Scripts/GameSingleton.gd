@@ -10,13 +10,13 @@ var map		: TileMap setget set_map, get_map
 func set_player(new_player : Node):
 	player = new_player
 	
-func get_player():
+func get_player() -> Node:
 	return player
 	
 func set_map(new_map : TileMap):
 	map = new_map
 
-func get_map():
+func get_map() -> TileMap:
 	return map
 # Called when the node enters the scene tree for the first time.
 func _ready():

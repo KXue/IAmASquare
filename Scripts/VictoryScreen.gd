@@ -7,7 +7,7 @@ var next_level : String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	Broadcaster.connect("game_won", self, "_on_game_won")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -15,6 +15,7 @@ func _ready():
 
 
 func _on_game_won(next_scene : String):
+	print(next_scene)
 	next_level = next_scene
 	show()
 

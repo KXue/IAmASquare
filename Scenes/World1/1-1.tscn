@@ -89,8 +89,4 @@ margin_left = 40.0
 margin_right = 56.0
 margin_bottom = 16.0
 texture_normal = ExtResource( 11 )
-[connection signal="add_block" from="TileMap" to="Spite" method="_on_add_block"]
-[connection signal="game_won" from="TileMap" to="Spite" method="_on_game_won"]
-[connection signal="game_won" from="TileMap" to="NinePatchRect" method="_on_game_won"]
-[connection signal="player_moved" from="Spite" to="TileMap" method="_on_player_moved"]
 [connection signal="pressed" from="NinePatchRect/HBoxContainer/Next" to="NinePatchRect" method="_on_Next_pressed"]
